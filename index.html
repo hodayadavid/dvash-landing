@@ -54,6 +54,26 @@
 
   ::selection { background: var(--gold-mid); color: var(--bo-bg); }
 
+  /* ============== GLOBAL ITALIC CLIPPING FIX ============== */
+  /* Hebrew italic letters (Frank Ruhl Libre Black Italic) extend above the
+     normal cap-height; without breathing room their tops get clipped by
+     background-clip:text and tight line-heights. */
+  em, .gold {
+    display: inline-block;
+    padding-block: 0.18em;
+    margin-block: -0.18em;
+    line-height: 1.35;
+  }
+  h1, h2, h3 {
+    overflow: visible;
+  }
+  .audience-head h2,
+  .final-cta h2,
+  .story blockquote {
+    line-height: 1.5 !important;
+    padding-block: 0.1em;
+  }
+
   /* ============== ANIMATIONS ============== */
   @keyframes shimmer {
     0%, 100% { background-position: 0% center; }
@@ -306,7 +326,7 @@
   h1.hero-title {
     font-family: 'Suez One', serif;
     font-size: clamp(46px, 7vw, 84px);
-    line-height: 1.1;
+    line-height: 1.3;
     color: var(--bo-cream);
     margin-bottom: 26px;
     letter-spacing: -1px;
@@ -323,6 +343,9 @@
     -webkit-text-fill-color: transparent;
     animation: shimmer 4s ease-in-out infinite;
     display: inline-block;
+    padding-block: 0.12em;
+    margin-block: -0.12em;
+    line-height: 1.25;
   }
   p.hero-sub {
     font-size: clamp(17px, 1.5vw, 21px);
@@ -746,13 +769,13 @@
   .marquee {
     position: relative;
     overflow: hidden;
-    padding: 20px 0;
+    padding: 12px 0;
   }
   .marquee::before, .marquee::after {
     content: '';
     position: absolute;
     top: 0; bottom: 0;
-    width: 80px;
+    width: 50px;
     z-index: 2;
     pointer-events: none;
   }
@@ -760,36 +783,51 @@
   .marquee::after { right: 0; background: linear-gradient(-90deg, var(--cream-50), transparent); }
   .marquee-track {
     display: flex;
-    gap: 24px;
-    animation: marquee 40s linear infinite;
+    gap: 14px;
+    animation: marquee 22s linear infinite;
     width: max-content;
   }
   .pain {
     flex-shrink: 0;
-    width: 360px;
-    padding: 28px 30px;
+    width: 320px;
+    padding: 20px 22px;
     background: var(--cream-50);
-    border-radius: 22px;
+    border-radius: 18px;
     border: 1px solid var(--sand-200);
     text-align: start;
     box-shadow: 0 4px 16px rgba(43, 31, 18, 0.04);
   }
   .pain .quote {
     font-family: 'Suez One', serif;
-    font-size: 17px;
-    line-height: 1.55;
+    font-size: 16px;
+    line-height: 1.5;
     color: var(--ink-900);
-    margin-bottom: 16px;
+    margin-bottom: 12px;
   }
   .pain .voice {
-    font-size: 13.5px;
+    font-size: 13px;
     color: var(--ink-600);
     font-style: italic;
     display: flex;
     align-items: center;
     gap: 8px;
   }
-  .pain .voice::before { content: ''; width: 24px; height: 1.5px; background: var(--honey-600); }
+  .pain .voice::before { content: ''; width: 20px; height: 1.5px; background: var(--honey-600); }
+
+  @media (max-width: 720px) {
+    .marquee-track {
+      gap: 10px;
+      animation: marquee 16s linear infinite;
+    }
+    .pain {
+      width: 250px;
+      padding: 16px 18px;
+      border-radius: 14px;
+    }
+    .pain .quote { font-size: 14.5px; line-height: 1.45; margin-bottom: 10px; }
+    .pain .voice { font-size: 12px; }
+    .marquee::before, .marquee::after { width: 30px; }
+  }
 
   /* ============== CTA BANNERS (variants) ============== */
   .cta-banner {
@@ -823,7 +861,7 @@
   .cta-banner h3 {
     font-family: 'Suez One', serif;
     font-size: clamp(26px, 4vw, 42px);
-    line-height: 1.3;
+    line-height: 1.5;
     margin-bottom: 14px;
   }
   .cta-banner.dark h3, .cta-banner.gold h3 { color: var(--bo-cream); }
@@ -836,6 +874,10 @@
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
+    display: inline-block;
+    padding-block: 0.12em;
+    margin-block: -0.12em;
+    line-height: 1.3;
   }
   .cta-banner.light h3 em {
     background: linear-gradient(135deg, var(--clay-500), var(--honey-600));
@@ -1906,7 +1948,7 @@
       <div class="phone-frame">
         <div class="phone-screen">
           <div class="ps-greet">בוקר טוב, נועה</div>
-          <div class="ps-meta"><span>יום 9 במחזור</span><span class="dot"></span><span>מצב טהורה</span></div>
+          <div class="ps-meta"><span>יום 9 במחזור</span><span class="dot"></span><span>מצב נידה</span></div>
           <div class="ps-card">
             <div class="lbl">שאלת היום</div>
             <div class="q">מה הדבר שאני לא יודע עלייך — ואת רוצה שאדע?</div>
@@ -1955,9 +1997,11 @@
       <div class="pain"><div class="quote">"השגרה אכלה אותנו. כבר לא מכירים אחד את השני."</div><div class="voice">ר., נשואה 14 שנים</div></div>
       <div class="pain"><div class="quote">"כל פעם שמתחיל המחזור — אנחנו מתחילים להתרחק. כועסת על עצמי."</div><div class="voice">מ., נשואה 8 שנים</div></div>
       <div class="pain"><div class="quote">"רציתי שיהיה לנו זמן לדבר. לא ידעתי איך להתחיל."</div><div class="voice">י., נשוי 4 שנים</div></div>
-      <div class="pain"><div class="quote">"כשאני בנידה, אנחנו פשוט פחות מדברים. לא יודעים על מה."</div><div class="voice">ש., נשואה 6 שנים</div></div>
-      <div class="pain"><div class="quote">"היא רוצה חיבור, אני לא יודע איך לתת אם אסור לי לחבק."</div><div class="voice">א., נשוי 11 שנים</div></div>
-      <div class="pain"><div class="quote">"השגרה אכלה אותנו. כבר לא מכירים אחד את השני."</div><div class="voice">ר., נשואה 14 שנים</div></div>
+      <div class="pain" aria-hidden="true"><div class="quote">"כשאני בנידה, אנחנו פשוט פחות מדברים. לא יודעים על מה."</div><div class="voice">ש., נשואה 6 שנים</div></div>
+      <div class="pain" aria-hidden="true"><div class="quote">"היא רוצה חיבור, אני לא יודע איך לתת אם אסור לי לחבק."</div><div class="voice">א., נשוי 11 שנים</div></div>
+      <div class="pain" aria-hidden="true"><div class="quote">"השגרה אכלה אותנו. כבר לא מכירים אחד את השני."</div><div class="voice">ר., נשואה 14 שנים</div></div>
+      <div class="pain" aria-hidden="true"><div class="quote">"כל פעם שמתחיל המחזור — אנחנו מתחילים להתרחק. כועסת על עצמי."</div><div class="voice">מ., נשואה 8 שנים</div></div>
+      <div class="pain" aria-hidden="true"><div class="quote">"רציתי שיהיה לנו זמן לדבר. לא ידעתי איך להתחיל."</div><div class="voice">י., נשוי 4 שנים</div></div>
     </div>
   </div>
 </section>
@@ -1993,11 +2037,11 @@
         </div>
         <div class="moment-content">
           <h4>נועה פותחת את היום</h4>
-          <p>שאלת היום מחכה לה — שאלה אחת, עמוקה, שגורמת לה לעצור. <strong>"מתי בפעם האחרונה הרגשת שאני באמת רואה אותך?"</strong></p>
+          <p>שאלת היום מחכה לה — בעדינות, ברגע הנכון. <strong>"איזה רגע קטן מהשבוע עדיין מחייך אותך כשאת חושבת עליו?"</strong></p>
         </div>
         <div class="moment-visual">
           <div class="mv-header"><div class="mv-av"><i data-lucide="message-circle-heart"></i></div><span>שאלת היום</span></div>
-          <div class="mv-body">"מתי בפעם האחרונה הרגשת שאני באמת <strong>רואה אותך</strong>?"</div>
+          <div class="mv-body">"איזה <strong>רגע קטן</strong> מהשבוע עדיין מחייך אותך?"</div>
         </div>
       </div>
 
@@ -2017,6 +2061,21 @@
       </div>
 
       <div class="moment reveal stagger-2">
+        <div class="time">
+          <div class="circle" style="border-color:var(--clay-500);color:var(--clay-500);"><i data-lucide="moon"></i></div>
+          <div class="label">20:00</div>
+        </div>
+        <div class="moment-content">
+          <h4>שאלה עמוקה לסוף היום</h4>
+          <p>הילדים נרדמו. נועה יושבת על הספה עם תה. השאלה הערבית מחכה — <strong>"מתי בפעם האחרונה הרגשת שאני באמת רואה אותך?"</strong></p>
+        </div>
+        <div class="moment-visual">
+          <div class="mv-header"><div class="mv-av" style="background:linear-gradient(135deg,var(--bo-burgundy),var(--clay-500));"><i data-lucide="moon"></i></div><span>שאלה ערבית</span></div>
+          <div class="mv-body">"מתי בפעם האחרונה הרגשת שאני באמת <strong>רואה אותך</strong>?"</div>
+        </div>
+      </div>
+
+      <div class="moment reveal stagger-3">
         <div class="time">
           <div class="circle" style="border-color:var(--olive-700);color:var(--olive-700);"><i data-lucide="messages-square"></i></div>
           <div class="label">21:45</div>
