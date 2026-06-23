@@ -330,15 +330,17 @@
     box-shadow: 0 0 12px var(--gold-shimmer);
     animation: pulse 2s infinite;
   }
+  .hero { overflow: visible !important; }
   h1.hero-title {
     font-family: 'Suez One', serif;
     font-size: clamp(46px, 7vw, 84px);
-    line-height: 1.6;
+    line-height: 1.9;
     color: var(--bo-cream);
     margin-bottom: 26px;
     letter-spacing: -1px;
     animation: fadeInUp 1000ms ease-out 100ms backwards;
     overflow: visible;
+    padding-top: 0.3em;
   }
   h1.hero-title em {
     font-family: 'Frank Ruhl Libre', serif;
@@ -351,9 +353,9 @@
     -webkit-text-fill-color: transparent;
     animation: shimmer 4s ease-in-out infinite;
     display: inline-block;
-    padding-block: 0.5em;
-    margin-block: -0.5em;
-    line-height: 1.6;
+    padding: 0.7em 0;
+    margin: -0.5em 0;
+    line-height: 1.9;
     overflow: visible;
   }
   p.hero-sub {
