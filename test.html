@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html dir="rtl" lang="he">
+<head>
+<meta charset="UTF-8">
+<title>בדיקה - JavaScript</title>
+<style>
+  body { font-family: Arial; padding: 40px; background: #FBF6EE; color: #2B1F12; text-align: center; }
+  button { padding: 18px 36px; font-size: 18px; background: #B8741A; color: white; border: none; border-radius: 12px; cursor: pointer; margin: 10px; }
+  button:hover { background: #D48A2E; }
+  #status { font-size: 22px; margin: 30px 0; padding: 20px; background: white; border-radius: 12px; min-height: 60px; }
+  .check { color: green; font-weight: bold; }
+  .x { color: red; font-weight: bold; }
+</style>
+</head>
+<body>
+  <h1>🧪 בדיקת JavaScript</h1>
+  <p>אם JavaScript עובד אצלך – הסטטוס למטה ישתנה אוטומטית</p>
+
+  <div id="status">⏳ ממתינה ל-JavaScript...</div>
+
+  <button id="testBtn">לחצי עליי</button>
+  <button id="testBtn2" onclick="alert('inline onclick עובד!')">בדיקה 2 (inline)</button>
+
+  <p id="clickCount">לחיצות: 0</p>
+
+  <script>
+    // בדיקה 1: שינוי טקסט
+    document.getElementById('status').innerHTML = '<span class="check">✅ JavaScript עובד! הסטטוס השתנה מ-JS</span>';
+
+    // בדיקה 2: לחיצה
+    let count = 0;
+    document.getElementById('testBtn').addEventListener('click', function() {
+      count++;
+      document.getElementById('clickCount').textContent = 'לחיצות: ' + count;
+      alert('הכפתור הראשון נלחץ! פעם ' + count);
+    });
+
+    console.log('✅ Test page JS ran successfully');
+  </script>
+</body>
+</html>
