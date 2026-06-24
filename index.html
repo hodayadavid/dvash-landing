@@ -956,7 +956,53 @@
     animation: floatUp 8s ease-in-out infinite;
   }
 
-  /* ============== DAY IN THE LIFE ============== */
+  /* ============== FEATURES OVERVIEW (replaces timeline) ============== */
+  .feat-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 18px;
+    max-width: 960px;
+    margin: 0 auto;
+  }
+  .feat-card {
+    background: var(--cream-50);
+    border-radius: 20px;
+    padding: 28px;
+    border: 1px solid var(--sand-200);
+    box-shadow: 0 6px 20px rgba(43, 31, 18, 0.06);
+    transition: transform 300ms cubic-bezier(0.16, 1, 0.3, 1), box-shadow 300ms ease;
+  }
+  .feat-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 14px 32px rgba(43, 31, 18, 0.12);
+  }
+  .feat-ico {
+    width: 52px; height: 52px;
+    border-radius: 14px;
+    display: flex; align-items: center; justify-content: center;
+    margin-bottom: 18px;
+    color: white;
+  }
+  .feat-ico svg { width: 24px; height: 24px; stroke-width: 1.8; }
+  .feat-ico.honey { background: linear-gradient(135deg, var(--honey-600), var(--honey-500)); }
+  .feat-ico.olive { background: linear-gradient(135deg, var(--olive-700), #6E8050); }
+  .feat-ico.clay { background: linear-gradient(135deg, var(--clay-500), var(--honey-600)); }
+  .feat-ico.burgundy { background: linear-gradient(135deg, var(--bo-burgundy), var(--bo-wine)); }
+  .feat-ico.purple { background: linear-gradient(135deg, var(--bo-purple), var(--bo-burgundy)); }
+  .feat-card h4 {
+    font-family: 'Suez One', serif;
+    font-size: 22px;
+    color: var(--ink-900);
+    line-height: 1.3;
+    margin-bottom: 10px;
+  }
+  .feat-card p {
+    font-size: 15px;
+    color: var(--ink-600);
+    line-height: 1.65;
+  }
+
+  /* ============== DAY IN THE LIFE (section wrapper) ============== */
   .dayinlife {
     background: linear-gradient(180deg, var(--cream-50) 0%, var(--cream-100) 100%);
     color: var(--ink-900);
@@ -2040,89 +2086,44 @@
   </div>
 </section>
 
-<!-- ===== DAY IN THE LIFE ===== -->
+<!-- ===== FEATURES OVERVIEW ===== -->
 <section class="dayinlife">
   <div class="dayinlife-inner">
     <div class="dayinlife-head">
-      <span class="section-eyebrow honey reveal">יום אחד בדבש</span>
-      <h2 class="reveal stagger-1">איך נראה <em>יום שלם</em> איתה</h2>
-      <p class="reveal stagger-2">לא אפליקציה שמופיעה פעם בשבוע. דבש איתכם בכל מצב לאורך כל היום, בדיוק ברגעים הנכונים.</p>
+      <span class="section-eyebrow honey reveal">חמישה פיצ'רים · כניסה אחת</span>
+      <h2 class="reveal stagger-1">תיכנסי. תבחרי. <em>תרגישי.</em></h2>
+      <p class="reveal stagger-2">כל פיצ'ר זמין מתי שמתאים לך. דבש מחכה.</p>
     </div>
 
-    <div class="timeline">
-      <div class="moment reveal">
-        <div class="time">
-          <div class="circle"><i data-lucide="sunrise"></i></div>
-          <div class="label">10:00</div>
-        </div>
-        <div class="moment-content">
-          <h4>נועה פותחת את היום</h4>
-          <p>שאלת היום מחכה לה, ברגע הנכון. <strong>"איזה רגע קטן מהשבוע עדיין מצחיק אותך כשאת חושבת עליו?"</strong></p>
-        </div>
-        <div class="moment-visual">
-          <div class="mv-header"><div class="mv-av"><i data-lucide="message-circle-heart"></i></div><span>שאלת היום</span></div>
-          <div class="mv-body">"איזה <strong>רגע קטן</strong> מהשבוע עדיין מצחיק אותך?"</div>
-        </div>
+    <div class="feat-grid">
+      <div class="feat-card reveal">
+        <div class="feat-ico honey"><i data-lucide="message-circle-heart"></i></div>
+        <h4>שאלה יומית</h4>
+        <p>שאלה אחת בערב. שיחה אמיתית בלילה. בלי הצגות.</p>
       </div>
 
-      <div class="moment reveal stagger-1">
-        <div class="time">
-          <div class="circle" style="border-color:var(--clay-500);color:var(--clay-500);"><i data-lucide="coffee"></i></div>
-          <div class="label">14:30</div>
-        </div>
-        <div class="moment-content">
-          <h4>החבר שולח הודעה לאיתי</h4>
-          <p>איתי בעבודה. דבש מזהה שנועה היום קצת רדומה ובבאסה. <strong>"אחי, היא לא תבקש אבל תכין לה תה וארוחת ערב."</strong></p>
-        </div>
-        <div class="moment-visual">
-          <div class="mv-header"><div class="mv-av"><i data-lucide="message-square"></i></div><span>הודעת חבר · פרטי לאיתי</span></div>
-          <div class="mv-body">"אחי, נועה היום עייפה ומבואסת <strong>תכין לה תה.</strong> היא לא תבקש 🍯"</div>
-        </div>
+      <div class="feat-card reveal stagger-1">
+        <div class="feat-ico olive"><i data-lucide="message-square"></i></div>
+        <h4>לחישה לבן/בת הזוג</h4>
+        <p>כשאת צריכה רגע יחס, הוא מקבל את הרמז. בשקט, בלי שתבקשי.</p>
       </div>
 
-      <div class="moment reveal stagger-2">
-        <div class="time">
-          <div class="circle" style="border-color:var(--clay-500);color:var(--clay-500);"><i data-lucide="moon"></i></div>
-          <div class="label">20:00</div>
-        </div>
-        <div class="moment-content">
-          <h4>שאלה עמוקה לסוף היום</h4>
-          <p>הילדים נרדמו. נועה יושבת על הספה עם תה. השאלה מחכה  <strong>"מתי בפעם האחרונה הרגשת שאני באמת רואה אותך?"</strong></p>
-        </div>
-        <div class="moment-visual">
-          <div class="mv-header"><div class="mv-av" style="background:linear-gradient(135deg,var(--bo-burgundy),var(--clay-500));"><i data-lucide="moon"></i></div><span>שאלה ערבית</span></div>
-          <div class="mv-body">"מתי בפעם האחרונה הרגשת שאני באמת <strong>רואה אותך</strong>?"</div>
-        </div>
+      <div class="feat-card reveal stagger-2">
+        <div class="feat-ico clay"><i data-lucide="messages-square"></i></div>
+        <h4>מטפל זוגי בצ'אט</h4>
+        <p>פרטי לכל אחד או יחד, מקשיב לא תופס צד, ולפעמים גם יכול להגיד את האמת שאולי גם באסה לשמוע.</p>
       </div>
 
-      <div class="moment reveal stagger-3">
-        <div class="time">
-          <div class="circle" style="border-color:var(--olive-700);color:var(--olive-700);"><i data-lucide="messages-square"></i></div>
-          <div class="label">21:45</div>
-        </div>
-        <div class="moment-content">
-          <h4>שיחה ביחד עם נגה</h4>
-          <p>יש להם משהו לעבד, שניהם נכנסים לצ'אט עם נגה או עומר <strong>היא לא חד צדדית היא פשוט מקשיבה לשניהם, ולפעמים אומרת אמת קשה בעדינות.</strong></p>
-        </div>
-        <div class="moment-visual">
-          <div class="mv-header"><div class="mv-av" style="background:linear-gradient(135deg,var(--clay-500),var(--honey-600));"><i data-lucide="messages-square"></i></div><span>נגה · שיחה משותפת</span></div>
-          <div class="mv-body">"איתי, רגע. <strong>'היא לא הזכירה לי' זה לא תירוץ.</strong> זה משהו שאתה אמור לזכור."</div>
-        </div>
+      <div class="feat-card reveal stagger-3">
+        <div class="feat-ico burgundy"><i data-lucide="sparkles"></i></div>
+        <h4>ליל מקווה חגיגי</h4>
+        <p>האפליקציה מתעוררת. עיצוב חדש, אנרגיה חדשה. הלילה הזה שלכם.</p>
       </div>
 
-      <div class="moment reveal stagger-3">
-        <div class="time">
-          <div class="circle" style="border-color:var(--bo-burgundy);color:var(--bo-burgundy);"><i data-lucide="book-open"></i></div>
-          <div class="label">23:10</div>
-        </div>
-        <div class="moment-content">
-          <h4>נועה כותבת ביומן</h4>
-          <p>השיחה הסתיימה. נועה כותבת לעצמה: <strong>"איך הרגשתי? מה גיליתי עליו שלא ידעתי?"</strong> זה שייך רק לה.</p>
-        </div>
-        <div class="moment-visual">
-          <div class="mv-header"><div class="mv-av" style="background:linear-gradient(135deg,var(--bo-burgundy),var(--bo-wine));"><i data-lucide="book-open"></i></div><span>היומן הפרטי שלי</span></div>
-          <div class="mv-body">"הוא בכה היום. <strong>לא ראיתי אותו בוכה כבר 3 שנים.</strong>"</div>
-        </div>
+      <div class="feat-card reveal stagger-4">
+        <div class="feat-ico purple"><i data-lucide="book-open"></i></div>
+        <h4>יומן פרטי</h4>
+        <p>המקום שלך לכתוב לעצמך. אף אחד לא רואה. אפילו לא בן הזוג.</p>
       </div>
     </div>
   </div>
